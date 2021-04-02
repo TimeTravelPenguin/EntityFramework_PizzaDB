@@ -12,6 +12,7 @@ namespace PizzaDB
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<StockTake> StockTakes { get; set; }
 
         public PizzaContext()
             : base("name=PizzaContext")
