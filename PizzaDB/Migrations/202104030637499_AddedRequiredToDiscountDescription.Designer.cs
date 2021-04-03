@@ -7,13 +7,13 @@ namespace PizzaDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class RenameMenuItemIngredientFKs : IMigrationMetadata
+    public sealed partial class AddedRequiredToDiscountDescription : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RenameMenuItemIngredientFKs));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedRequiredToDiscountDescription));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104021046547_RenameMenuItemIngredientFKs"; }
+            get { return "202104030637499_AddedRequiredToDiscountDescription"; }
         }
         
         string IMigrationMetadata.Source

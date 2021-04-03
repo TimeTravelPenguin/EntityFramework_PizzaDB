@@ -4,7 +4,7 @@
 // 
 // Solution: PizzaDB
 // Project: PizzaDB
-// File Name: Stock.cs
+// File Name: IngredientStock.cs
 // 
 // Current Data:
 // 2021-04-02 11:16 PM
@@ -14,16 +14,19 @@
 
 #endregion
 
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PizzaDB.Entities
 {
-    public class Stock
+    public class IngredientStock
     {
-        public int IngredientId { get; set; }
+        public int IngredientStockId { get; set; }
 
-        public Ingredient Ingredient { get; set; }
+        [Required]
+        [ForeignKey(nameof(Entities.Ingredient.IngredientStock))]
+        public ICollection<Ingredient> Ingredient { get; set; }
 
         public int CurrentStockLevel { get; set; }
         public int RecommendedStockLevel { get; set; }

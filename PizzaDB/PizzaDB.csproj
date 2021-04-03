@@ -55,42 +55,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Discount.cs" />
     <Compile Include="Entities\Ingredient.cs" />
     <Compile Include="Entities\IngredientType.cs" />
     <Compile Include="Entities\MenuItem.cs" />
-    <Compile Include="Entities\Stock.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\IngredientStock.cs" />
+    <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\StockTake.cs" />
+    <Compile Include="Entities\Supplier.cs" />
     <Compile Include="EntityConfigurations\IngredientConfiguration.cs" />
     <Compile Include="EntityConfigurations\MenuItemConfiguration.cs" />
     <Compile Include="EntityConfigurations\StockConfiguration.cs" />
     <Compile Include="EntityConfigurations\StockTakeConfiguration.cs" />
-    <Compile Include="Migrations\202104021029584_InitialMigration.cs" />
-    <Compile Include="Migrations\202104021029584_InitialMigration.designer.cs">
-      <DependentUpon>202104021029584_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202104030615365_Initial.cs" />
+    <Compile Include="Migrations\202104030615365_Initial.designer.cs">
+      <DependentUpon>202104030615365_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104021032571_AddedMenuItemAndIngredients.cs" />
-    <Compile Include="Migrations\202104021032571_AddedMenuItemAndIngredients.designer.cs">
-      <DependentUpon>202104021032571_AddedMenuItemAndIngredients.cs</DependentUpon>
+    <Compile Include="Migrations\202104030627515_AddedOrderDetailsForCustomerAndOrder.cs" />
+    <Compile Include="Migrations\202104030627515_AddedOrderDetailsForCustomerAndOrder.designer.cs">
+      <DependentUpon>202104030627515_AddedOrderDetailsForCustomerAndOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104021044144_AddedMenuItemIngredientsRelation.cs" />
-    <Compile Include="Migrations\202104021044144_AddedMenuItemIngredientsRelation.designer.cs">
-      <DependentUpon>202104021044144_AddedMenuItemIngredientsRelation.cs</DependentUpon>
+    <Compile Include="Migrations\202104030632340_AddSellPriceToMenuItem.cs" />
+    <Compile Include="Migrations\202104030632340_AddSellPriceToMenuItem.designer.cs">
+      <DependentUpon>202104030632340_AddSellPriceToMenuItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104021046547_RenameMenuItemIngredientFKs.cs" />
-    <Compile Include="Migrations\202104021046547_RenameMenuItemIngredientFKs.designer.cs">
-      <DependentUpon>202104021046547_RenameMenuItemIngredientFKs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104021210155_CreateIngredientStock.cs" />
-    <Compile Include="Migrations\202104021210155_CreateIngredientStock.designer.cs">
-      <DependentUpon>202104021210155_CreateIngredientStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104021244414_CreateStockTake.cs" />
-    <Compile Include="Migrations\202104021244414_CreateStockTake.designer.cs">
-      <DependentUpon>202104021244414_CreateStockTake.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104021322421_AddIngredientTypeToIngredient.cs" />
-    <Compile Include="Migrations\202104021322421_AddIngredientTypeToIngredient.designer.cs">
-      <DependentUpon>202104021322421_AddIngredientTypeToIngredient.cs</DependentUpon>
+    <Compile Include="Migrations\202104030637499_AddedRequiredToDiscountDescription.cs" />
+    <Compile Include="Migrations\202104030637499_AddedRequiredToDiscountDescription.designer.cs">
+      <DependentUpon>202104030637499_AddedRequiredToDiscountDescription.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PizzaContext.cs" />
@@ -101,28 +94,18 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104021029584_InitialMigration.resx">
-      <DependentUpon>202104021029584_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104030615365_Initial.resx">
+      <DependentUpon>202104030615365_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104021032571_AddedMenuItemAndIngredients.resx">
-      <DependentUpon>202104021032571_AddedMenuItemAndIngredients.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104030627515_AddedOrderDetailsForCustomerAndOrder.resx">
+      <DependentUpon>202104030627515_AddedOrderDetailsForCustomerAndOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104021044144_AddedMenuItemIngredientsRelation.resx">
-      <DependentUpon>202104021044144_AddedMenuItemIngredientsRelation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104030632340_AddSellPriceToMenuItem.resx">
+      <DependentUpon>202104030632340_AddSellPriceToMenuItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104021046547_RenameMenuItemIngredientFKs.resx">
-      <DependentUpon>202104021046547_RenameMenuItemIngredientFKs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104021210155_CreateIngredientStock.resx">
-      <DependentUpon>202104021210155_CreateIngredientStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104021244414_CreateStockTake.resx">
-      <DependentUpon>202104021244414_CreateStockTake.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104021322421_AddIngredientTypeToIngredient.resx">
-      <DependentUpon>202104021322421_AddIngredientTypeToIngredient.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104030637499_AddedRequiredToDiscountDescription.resx">
+      <DependentUpon>202104030637499_AddedRequiredToDiscountDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

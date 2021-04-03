@@ -16,21 +16,28 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PizzaDB.Entities
 {
     public class Ingredient
     {
-        public int Id { get; set; }
+        public int IngredientId { get; set; }
 
         [MaxLength(25)]
-        public string Name { get; set; }
+        public string IngredientName { get; set; }
 
-        public Stock Stock { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(IngredientStock))]
+        public int IngredientStockId { get; set; }
+
+        public IngredientStock IngredientStock { get; set; }
+
         public IngredientType IngredientType { get; set; }
 
         public ICollection<StockTake> StockTakes { get; set; }
-
         public ICollection<MenuItem> MenuItems { get; set; }
+        public ICollection<Supplier> IngredientSuppliers { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace PizzaDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddedMenuItemIngredientsRelation : IMigrationMetadata
+    public sealed partial class AddedOrderDetailsForCustomerAndOrder : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedMenuItemIngredientsRelation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedOrderDetailsForCustomerAndOrder));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104021044144_AddedMenuItemIngredientsRelation"; }
+            get { return "202104030627515_AddedOrderDetailsForCustomerAndOrder"; }
         }
         
         string IMigrationMetadata.Source
