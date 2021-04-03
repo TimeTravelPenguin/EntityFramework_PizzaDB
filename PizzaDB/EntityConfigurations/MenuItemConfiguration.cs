@@ -1,20 +1,16 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PizzaDB.Entities;
 
 namespace PizzaDB.EntityConfigurations
 {
-    public class MenuItemConfiguration : EntityTypeConfiguration<MenuItem>
+    public class MenuItemConfiguration : IEntityTypeConfiguration<MenuItem>
     {
-        public MenuItemConfiguration()
+        public void Configure(EntityTypeBuilder<MenuItem> builder)
         {
-            HasMany(menuItem => menuItem.Ingredients)
+            builder.HasMany(menuItem => menuItem.Ingredients)
                 .WithMany(ing => ing.MenuItems)
-                .Map(m =>
-                {
-                    m.ToTable("MenuItemIngredients");
-                    m.MapLeftKey("menuItemId");
-                    m.MapRightKey("ingredientId");
-                });
+                .UsingEntity(m => m.ToTable("MenuItemIngredients"));
         }
     }
 }

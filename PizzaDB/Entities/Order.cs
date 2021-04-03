@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaDB.Entities
 {
@@ -10,5 +11,14 @@ namespace PizzaDB.Entities
         public int PaymentId { get; set; }
 
         public Payment Payment { get; set; }
+
+
+        [Required]
+        public DateTime DateTimeOrderPlaced { get; set; }
+
+        [Required]
+        public DateTime DateTimeOrderDue { get; set; }
+
+        public DateTime? DateTimeOrderFulfilled { get; set; }
     }
 }

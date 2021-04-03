@@ -1,5 +1,5 @@
-using System.Data.Entity;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using PizzaDB.Entities;
 
 namespace PizzaDB
@@ -11,23 +11,27 @@ namespace PizzaDB
 
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
-        public virtual DbSet<IngredientStock> Stocks { get; set; }
+        public virtual DbSet<IngredientStock> IngredientStocks { get; set; }
         public virtual DbSet<StockTake> StockTakes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
 
-        public PizzaContext()
-            : base("name=PizzaContext")
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer(
+                @"Server=localhost,1433;Database=PizzaDB;User=sa;Password=P3nguins");
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Configurations
-                .AddFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

@@ -5,7 +5,7 @@ namespace PizzaDB.Entities
 {
     public class MenuItem
     {
-        public int Id { get; set; }
+        public int MenuItemId { get; set; }
 
         [MaxLength(50)] public string Name { get; set; }
 

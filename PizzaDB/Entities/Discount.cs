@@ -15,15 +15,15 @@
 #endregion
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace PizzaDB.Entities
 {
+    [Index(nameof(DiscountCode), IsUnique = true)]
     public class Discount
     {
         public int DiscountId { get; set; }
 
-        [Index(IsUnique = true)]
         public int DiscountCode { get; set; }
 
         [Required]

@@ -27,13 +27,6 @@ namespace PizzaDB.Entities
         [MaxLength(25)]
         public string IngredientName { get; set; }
 
-
-        [Required]
-        [ForeignKey(nameof(IngredientStock))]
-        public int IngredientStockId { get; set; }
-
-        public IngredientStock IngredientStock { get; set; }
-
         public IngredientType IngredientType { get; set; }
 
         public ICollection<StockTake> StockTakes { get; set; }

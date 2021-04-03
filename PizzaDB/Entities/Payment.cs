@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace PizzaDB.Entities
+﻿namespace PizzaDB.Entities
 {
     public class Payment
     {
@@ -22,13 +19,5 @@ namespace PizzaDB.Entities
         public double PaymentTax { get; set; }
 
         public double PaymentTotal { get; set; }
-
-        [Required]
-        public DateTime DateTimeOrderPlaced { get; set; }
-
-        [Required]
-        public DateTime DateTimeOrderDue { get; set; }
-
-        public DateTime? DateTimeOrderFulfilled { get; set; }
     }
 }

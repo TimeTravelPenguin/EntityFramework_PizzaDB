@@ -14,19 +14,14 @@
 
 #endregion
 
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace PizzaDB.Entities
 {
     public class IngredientStock
     {
         public int IngredientStockId { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Entities.Ingredient.IngredientStock))]
-        public ICollection<Ingredient> Ingredient { get; set; }
+        public int IngredientId { get; set; }
+        public Ingredient Ingredient { get; set; }
 
         public int CurrentStockLevel { get; set; }
         public int RecommendedStockLevel { get; set; }
