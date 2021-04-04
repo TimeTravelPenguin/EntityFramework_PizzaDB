@@ -20,19 +20,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PizzaDB.Entities
 {
-    [Index(nameof(IngredientId), IsUnique = true)]
-    public class StockTake
-    {
-        public int StockTakeId { get; set; }
+  [Index(nameof(IngredientId), IsUnique = true)]
+  public class StockTake
+  {
+    public int StockTakeId { get; set; }
 
-        [Required]
-        public int IngredientId { get; set; }
+    [Required] public int IngredientId { get; set; }
 
-        public Ingredient Ingredient { get; set; }
+    public Ingredient Ingredient { get; set; }
 
-        [Required]
-        public DateTime DateTime { get; set; }
+    [Required] public DateTime DateTime { get; set; }
 
-        public int StockLevel { get; set; }
-    }
+    public int StockLevel { get; set; }
+  }
 }

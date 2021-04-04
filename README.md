@@ -1,2 +1,2 @@
 # EntityFramework_PizzaDB
-Practice EF project
+Practice EF Core project

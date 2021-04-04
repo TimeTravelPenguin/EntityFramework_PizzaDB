@@ -1,15 +1,32 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#region Title Header
+
+// Name: Phillip Smith
+// 
+// Solution: PizzaDB
+// Project: PizzaDB
+// File Name: Customer.cs
+// 
+// Current Data:
+// 2021-04-05 8:26 AM
+// 
+// Creation Date:
+// 2021-04-04 4:31 PM
+
+#endregion
+
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaDB.Entities
 {
-    public class Customer
-    {
-        public int CustomerId { get; set; }
+  public class Customer
+  {
+    public int CustomerId { get; set; }
 
-        [Required]
-        public string FirstName { get; set; }
+    [Required] [MaxLength(25)] public string FirstName { get; set; }
 
-        [Required]
-        public string LastName { get; set; }
-    }
+    [Required] [MaxLength(25)] public string LastName { get; set; }
+
+    public ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
+  }
 }

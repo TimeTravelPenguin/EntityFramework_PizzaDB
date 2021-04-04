@@ -16,15 +16,15 @@
 
 using System;
 
-namespace PizzaDB.Entities
+namespace PizzaDB.Entities.Types
 {
-    [Flags]
-    public enum IngredientType
-    {
-        Vegetable,
-        Meat,
-        Dairy,
-        Vegan,
-        Fruit
-    }
+  [Flags]
+  public enum IngredientType
+  {
+    Vegetable,
+    Meat,
+    Dairy,
+    Vegan,
+    Fruit
+  }
 }

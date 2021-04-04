@@ -19,15 +19,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PizzaDB.Entities
 {
-    [Index(nameof(DiscountCode), IsUnique = true)]
-    public class Discount
-    {
-        public int DiscountId { get; set; }
+  [Index(nameof(DiscountCode), IsUnique = true)]
+  public class Discount
+  {
+    public int DiscountId { get; set; }
 
-        public int DiscountCode { get; set; }
+    public int DiscountCode { get; set; }
 
-        [Required]
-        [MaxLength(200)]
-        public string Description { get; set; }
-    }
+    [Required] [MaxLength(200)] public string Description { get; set; }
+  }
 }

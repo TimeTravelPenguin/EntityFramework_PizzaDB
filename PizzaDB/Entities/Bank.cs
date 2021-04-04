@@ -1,0 +1,29 @@
+﻿#region Title Header
+
+// Name: Phillip Smith
+// 
+// Solution: PizzaDB
+// Project: PizzaDB
+// File Name: Bank.cs
+// 
+// Current Data:
+// 2021-04-05 2:07 AM
+// 
+// Creation Date:
+// 2021-04-04 4:31 PM
+
+#endregion
+
+using System.ComponentModel.DataAnnotations;
+
+namespace PizzaDB.Entities
+{
+  public class Bank
+  {
+    public int BankId { get; set; }
+
+    [Required] [StringLength(6)] public string Bsb { get; set; }
+
+    [Required] [MaxLength(25)] public string BankName { get; set; }
+  }
+}

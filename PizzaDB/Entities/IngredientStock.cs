@@ -16,15 +16,15 @@
 
 namespace PizzaDB.Entities
 {
-    public class IngredientStock
-    {
-        public int IngredientStockId { get; set; }
+  public class IngredientStock
+  {
+    public int IngredientStockId { get; set; }
 
-        public int IngredientId { get; set; }
-        public Ingredient Ingredient { get; set; }
+    public int IngredientId { get; set; }
+    public Ingredient Ingredient { get; set; }
 
-        public int CurrentStockLevel { get; set; }
-        public int RecommendedStockLevel { get; set; }
-        public int ReorderStockLevel { get; set; }
-    }
+    public int CurrentStockLevel { get; set; }
+    public int RecommendedStockLevel { get; set; }
+    public int ReorderStockLevel { get; set; }
+  }
 }
