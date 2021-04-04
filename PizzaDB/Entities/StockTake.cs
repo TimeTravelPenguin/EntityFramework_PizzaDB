@@ -16,10 +16,12 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace PizzaDB.Entities
 {
+  [Table("StockTakes`")]
   [Index(nameof(IngredientId), IsUnique = true)]
   public class StockTake
   {

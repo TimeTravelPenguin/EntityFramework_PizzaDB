@@ -7,7 +7,7 @@
 // File Name: Address.cs
 // 
 // Current Data:
-// 2021-04-05 8:26 AM
+// 2021-04-05 8:44 AM
 // 
 // Creation Date:
 // 2021-04-04 4:32 PM
@@ -16,10 +16,12 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using PizzaDB.Entities.Types;
 
 namespace PizzaDB.Entities
 {
+  [Table("Addresses")]
   public class Address
   {
     public int AddressId { get; set; }

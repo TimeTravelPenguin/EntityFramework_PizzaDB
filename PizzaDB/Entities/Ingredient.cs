@@ -7,7 +7,7 @@
 // File Name: Ingredient.cs
 // 
 // Current Data:
-// 2021-04-05 2:08 AM
+// 2021-04-05 8:51 AM
 // 
 // Creation Date:
 // 2021-04-04 4:31 PM
@@ -16,10 +16,12 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using PizzaDB.Entities.Types;
 
 namespace PizzaDB.Entities
 {
+  [Table("Ingredients")]
   public class Ingredient
   {
     public int IngredientId { get; set; }

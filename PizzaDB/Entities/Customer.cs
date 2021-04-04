@@ -7,7 +7,7 @@
 // File Name: Customer.cs
 // 
 // Current Data:
-// 2021-04-05 8:26 AM
+// 2021-04-05 8:49 AM
 // 
 // Creation Date:
 // 2021-04-04 4:31 PM
@@ -16,9 +16,11 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PizzaDB.Entities
 {
+  [Table("Customer")]
   public class Customer
   {
     public int CustomerId { get; set; }

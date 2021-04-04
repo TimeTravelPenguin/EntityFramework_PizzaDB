@@ -7,15 +7,18 @@
 // File Name: IngredientStock.cs
 // 
 // Current Data:
-// 2021-04-02 11:16 PM
+// 2021-04-05 8:52 AM
 // 
 // Creation Date:
-// -- 
+// 2021-04-04 4:32 PM
 
 #endregion
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace PizzaDB.Entities
 {
+  [Table("IngredientStocks")]
   public class IngredientStock
   {
     public int IngredientStockId { get; set; }

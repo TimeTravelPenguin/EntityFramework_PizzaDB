@@ -7,7 +7,7 @@
 // File Name: Contact.cs
 // 
 // Current Data:
-// 2021-04-05 2:07 AM
+// 2021-04-05 8:49 AM
 // 
 // Creation Date:
 // 2021-04-04 4:31 PM
@@ -15,10 +15,12 @@
 #endregion
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace PizzaDB.Entities
 {
+  [Table("Contacts")]
   public class Contact
   {
     public int ContactId { get; set; }
