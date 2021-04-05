@@ -7,7 +7,7 @@
 // File Name: CustomerAddress.cs
 // 
 // Current Data:
-// 2021-04-05 8:50 AM
+// 2021-04-05 9:30 AM
 // 
 // Creation Date:
 // 2021-04-04 9:47 PM
@@ -21,10 +21,12 @@ namespace PizzaDB.Entities
   [Table("CustomerAddresses")]
   public class CustomerAddress
   {
-    public int CustomerId { get; set; }
+    [ForeignKey(nameof(Customer))] public int CustomerId { get; set; }
+
     public Customer Customer { get; set; }
 
-    public int AddressId { get; set; }
+    [ForeignKey(nameof(Address))] public int AddressId { get; set; }
+
     public Address Address { get; set; }
   }
 }

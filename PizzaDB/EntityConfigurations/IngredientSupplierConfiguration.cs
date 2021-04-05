@@ -4,10 +4,10 @@
 // 
 // Solution: PizzaDB
 // Project: PizzaDB
-// File Name: SupplierIngredientConfiguration.cs
+// File Name: IngredientSupplierConfiguration.cs
 // 
 // Current Data:
-// 2021-04-05 8:23 AM
+// 2021-04-05 9:27 AM
 // 
 // Creation Date:
 // 2021-04-04 4:31 PM
@@ -20,11 +20,11 @@ using PizzaDB.Entities;
 
 namespace PizzaDB.EntityConfigurations
 {
-  public class SupplierIngredientConfiguration : IEntityTypeConfiguration<MenuItemIngredient>
+  public class IngredientSupplierConfiguration : IEntityTypeConfiguration<IngredientSupplier>
   {
-    public void Configure(EntityTypeBuilder<MenuItemIngredient> builder)
+    public void Configure(EntityTypeBuilder<IngredientSupplier> builder)
     {
-      builder.HasKey(x => new {x.MenuItemId, x.IngredientId});
+      builder.HasKey(x => new {x.IngredientId, x.SupplierId});
     }
   }
 }

@@ -21,7 +21,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PizzaDB.Entities
 {
-  [Table("StockTakes`")]
+  [Table("StockTakes")]
   [Index(nameof(IngredientId), IsUnique = true)]
   public class StockTake
   {

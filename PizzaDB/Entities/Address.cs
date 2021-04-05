@@ -7,14 +7,13 @@
 // File Name: Address.cs
 // 
 // Current Data:
-// 2021-04-05 8:44 AM
+// 2021-04-05 9:46 AM
 // 
 // Creation Date:
 // 2021-04-04 4:32 PM
 
 #endregion
 
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using PizzaDB.Entities.Types;
@@ -33,7 +32,5 @@ namespace PizzaDB.Entities
     [Required] [MaxLength(4)] public string PostCode { get; set; }
 
     public AddressState State { get; set; }
-
-    public ICollection<Customer> Customers { get; set; } = new HashSet<Customer>();
   }
 }

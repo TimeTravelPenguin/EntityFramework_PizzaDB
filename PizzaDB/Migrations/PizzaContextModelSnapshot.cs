@@ -19,51 +19,6 @@ namespace PizzaDB.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AddressCustomer", b =>
-                {
-                    b.Property<int>("AddressesAddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomersCustomerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AddressesAddressId", "CustomersCustomerId");
-
-                    b.HasIndex("CustomersCustomerId");
-
-                    b.ToTable("AddressCustomer");
-                });
-
-            modelBuilder.Entity("IngredientMenuItem", b =>
-                {
-                    b.Property<int>("IngredientsIngredientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MenuItemsMenuItemId")
-                        .HasColumnType("int");
-
-                    b.HasKey("IngredientsIngredientId", "MenuItemsMenuItemId");
-
-                    b.HasIndex("MenuItemsMenuItemId");
-
-                    b.ToTable("IngredientMenuItem");
-                });
-
-            modelBuilder.Entity("IngredientSupplier", b =>
-                {
-                    b.Property<int>("IngredientSuppliersSupplierId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SuppliedIngredientsIngredientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("IngredientSuppliersSupplierId", "SuppliedIngredientsIngredientId");
-
-                    b.HasIndex("SuppliedIngredientsIngredientId");
-
-                    b.ToTable("IngredientSupplier");
-                });
-
             modelBuilder.Entity("PizzaDB.Entities.Address", b =>
                 {
                     b.Property<int>("AddressId")
@@ -152,9 +107,8 @@ namespace PizzaDB.Migrations
 
                     b.Property<string>("ContactNumber")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)")
-                        .HasComment("AUS contact number in form: 0123 456 789");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("ContactId");
 
@@ -263,7 +217,7 @@ namespace PizzaDB.Migrations
 
                     b.ToTable("Employees");
 
-                    b.HasDiscriminator<int>("EmployeeType");
+                    b.HasDiscriminator<int>("EmployeeType").HasValue(0);
                 });
 
             modelBuilder.Entity("PizzaDB.Entities.Ingredient", b =>
@@ -309,6 +263,21 @@ namespace PizzaDB.Migrations
                     b.HasIndex("IngredientId");
 
                     b.ToTable("IngredientStocks");
+                });
+
+            modelBuilder.Entity("PizzaDB.Entities.IngredientSupplier", b =>
+                {
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IngredientId", "SupplierId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("IngredientSuppliers");
                 });
 
             modelBuilder.Entity("PizzaDB.Entities.MenuItem", b =>
@@ -452,7 +421,9 @@ namespace PizzaDB.Migrations
                     b.Property<double?>("PayRatePerDelivery")
                         .HasColumnType("float");
 
-                    b.HasDiscriminator().HasValue(1);
+                    b.ToTable("Employees");
+
+                    b.HasDiscriminator().HasValue(2);
                 });
 
             modelBuilder.Entity("PizzaDB.Entities.StoreEmployee", b =>
@@ -462,52 +433,9 @@ namespace PizzaDB.Migrations
                     b.Property<double?>("PayRatePerHour")
                         .HasColumnType("float");
 
-                    b.HasDiscriminator().HasValue(0);
-                });
+                    b.ToTable("Employees");
 
-            modelBuilder.Entity("AddressCustomer", b =>
-                {
-                    b.HasOne("PizzaDB.Entities.Address", null)
-                        .WithMany()
-                        .HasForeignKey("AddressesAddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PizzaDB.Entities.Customer", null)
-                        .WithMany()
-                        .HasForeignKey("CustomersCustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("IngredientMenuItem", b =>
-                {
-                    b.HasOne("PizzaDB.Entities.Ingredient", null)
-                        .WithMany()
-                        .HasForeignKey("IngredientsIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PizzaDB.Entities.MenuItem", null)
-                        .WithMany()
-                        .HasForeignKey("MenuItemsMenuItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("IngredientSupplier", b =>
-                {
-                    b.HasOne("PizzaDB.Entities.Supplier", null)
-                        .WithMany()
-                        .HasForeignKey("IngredientSuppliersSupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PizzaDB.Entities.Ingredient", null)
-                        .WithMany()
-                        .HasForeignKey("SuppliedIngredientsIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasDiscriminator().HasValue(1);
                 });
 
             modelBuilder.Entity("PizzaDB.Entities.BankAccount", b =>
@@ -576,6 +504,25 @@ namespace PizzaDB.Migrations
                         .IsRequired();
 
                     b.Navigation("Ingredient");
+                });
+
+            modelBuilder.Entity("PizzaDB.Entities.IngredientSupplier", b =>
+                {
+                    b.HasOne("PizzaDB.Entities.Ingredient", "Ingredient")
+                        .WithMany()
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PizzaDB.Entities.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ingredient");
+
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("PizzaDB.Entities.MenuItemIngredient", b =>

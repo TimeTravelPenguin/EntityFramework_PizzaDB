@@ -44,7 +44,7 @@ namespace PizzaDB.Migrations
                     ContactId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ContactName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    ContactNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "AUS contact number in form: 0123 456 789")
+                    ContactNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -137,30 +137,6 @@ namespace PizzaDB.Migrations
                         column: x => x.BankId,
                         principalTable: "Banks",
                         principalColumn: "BankId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AddressCustomer",
-                columns: table => new
-                {
-                    AddressesAddressId = table.Column<int>(type: "int", nullable: false),
-                    CustomersCustomerId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AddressCustomer", x => new { x.AddressesAddressId, x.CustomersCustomerId });
-                    table.ForeignKey(
-                        name: "FK_AddressCustomer_Addresses_AddressesAddressId",
-                        column: x => x.AddressesAddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AddressCustomer_Customers_CustomersCustomerId",
-                        column: x => x.CustomersCustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "CustomerId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -262,30 +238,6 @@ namespace PizzaDB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IngredientMenuItem",
-                columns: table => new
-                {
-                    IngredientsIngredientId = table.Column<int>(type: "int", nullable: false),
-                    MenuItemsMenuItemId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IngredientMenuItem", x => new { x.IngredientsIngredientId, x.MenuItemsMenuItemId });
-                    table.ForeignKey(
-                        name: "FK_IngredientMenuItem_Ingredients_IngredientsIngredientId",
-                        column: x => x.IngredientsIngredientId,
-                        principalTable: "Ingredients",
-                        principalColumn: "IngredientId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_IngredientMenuItem_MenuItems_MenuItemsMenuItemId",
-                        column: x => x.MenuItemsMenuItemId,
-                        principalTable: "MenuItems",
-                        principalColumn: "MenuItemId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MenuItemIngredients",
                 columns: table => new
                 {
@@ -310,24 +262,24 @@ namespace PizzaDB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IngredientSupplier",
+                name: "IngredientSuppliers",
                 columns: table => new
                 {
-                    IngredientSuppliersSupplierId = table.Column<int>(type: "int", nullable: false),
-                    SuppliedIngredientsIngredientId = table.Column<int>(type: "int", nullable: false)
+                    IngredientId = table.Column<int>(type: "int", nullable: false),
+                    SupplierId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IngredientSupplier", x => new { x.IngredientSuppliersSupplierId, x.SuppliedIngredientsIngredientId });
+                    table.PrimaryKey("PK_IngredientSuppliers", x => new { x.IngredientId, x.SupplierId });
                     table.ForeignKey(
-                        name: "FK_IngredientSupplier_Ingredients_SuppliedIngredientsIngredientId",
-                        column: x => x.SuppliedIngredientsIngredientId,
+                        name: "FK_IngredientSuppliers_Ingredients_IngredientId",
+                        column: x => x.IngredientId,
                         principalTable: "Ingredients",
                         principalColumn: "IngredientId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_IngredientSupplier_Suppliers_IngredientSuppliersSupplierId",
-                        column: x => x.IngredientSuppliersSupplierId,
+                        name: "FK_IngredientSuppliers_Suppliers_SupplierId",
+                        column: x => x.SupplierId,
                         principalTable: "Suppliers",
                         principalColumn: "SupplierId",
                         onDelete: ReferentialAction.Cascade);
@@ -395,11 +347,6 @@ namespace PizzaDB.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AddressCustomer_CustomersCustomerId",
-                table: "AddressCustomer",
-                column: "CustomersCustomerId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_BankAccounts_BankId",
                 table: "BankAccounts",
                 column: "BankId");
@@ -431,19 +378,14 @@ namespace PizzaDB.Migrations
                 column: "ContactId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IngredientMenuItem_MenuItemsMenuItemId",
-                table: "IngredientMenuItem",
-                column: "MenuItemsMenuItemId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_IngredientStocks_IngredientId",
                 table: "IngredientStocks",
                 column: "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IngredientSupplier_SuppliedIngredientsIngredientId",
-                table: "IngredientSupplier",
-                column: "SuppliedIngredientsIngredientId");
+                name: "IX_IngredientSuppliers_SupplierId",
+                table: "IngredientSuppliers",
+                column: "SupplierId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MenuItemIngredients_IngredientId",
@@ -475,22 +417,16 @@ namespace PizzaDB.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AddressCustomer");
-
-            migrationBuilder.DropTable(
                 name: "CustomerAddresses");
 
             migrationBuilder.DropTable(
                 name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "IngredientMenuItem");
-
-            migrationBuilder.DropTable(
                 name: "IngredientStocks");
 
             migrationBuilder.DropTable(
-                name: "IngredientSupplier");
+                name: "IngredientSuppliers");
 
             migrationBuilder.DropTable(
                 name: "MenuItemIngredients");

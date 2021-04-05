@@ -31,7 +31,5 @@ namespace PizzaDB.Entities
     public IngredientType IngredientType { get; set; }
 
     public ICollection<StockTake> StockTakes { get; set; } = new HashSet<StockTake>();
-    public ICollection<MenuItem> MenuItems { get; set; } = new HashSet<MenuItem>();
-    public ICollection<Supplier> IngredientSuppliers { get; set; } = new HashSet<Supplier>();
   }
 }

@@ -20,7 +20,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PizzaDB.Entities
 {
-  [Table("Customer")]
+  [Table("Customers")]
   public class Customer
   {
     public int CustomerId { get; set; }
@@ -28,7 +28,5 @@ namespace PizzaDB.Entities
     [Required] [MaxLength(25)] public string FirstName { get; set; }
 
     [Required] [MaxLength(25)] public string LastName { get; set; }
-
-    public ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
   }
 }
